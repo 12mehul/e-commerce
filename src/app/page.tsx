@@ -1,8 +1,30 @@
+'use client'
 import Link from 'next/link'
+import { useEffect, useState } from "react";
 import Footer from './components/Footer/page'
 import Navbar from './components/Navbar/page'
+import ProductsList from './components/ProductsList/page'
+import axios from 'axios'
 
 const Home = () => {
+  interface Product {
+    id: number;
+    image: string;
+    title: string;
+    price: number;
+  }
+  
+  const [products,setProducts]=useState<Product[]>([]);
+
+  useEffect(() => {
+    axios
+      .get("https://fakestoreapi.com/products?limit=5")
+      .then((response) =>  {
+        let productsData = response.data.slice(0, 4);
+        setProducts(productsData);
+        
+      })
+  }, []);
   return (
     <div className="container mx-auto px-4">
       <Navbar />
@@ -18,6 +40,7 @@ const Home = () => {
       <section className="py-12">
         <div className="container mx-auto">
           <h2 className="text-3xl mb-8">Featured Products</h2>
+          <ProductsList products={products}/>
           {/* Here you should fetch the first 4 products and display them */}
           {/* This part is omitted for brevity */}
         </div>

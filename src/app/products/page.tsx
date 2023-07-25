@@ -4,43 +4,36 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar/page";
 import Footer from "../components/Footer/page";
+import ProductList from "../components/ProductsList/page";
+
+interface Product {
+  id: number;
+  image: string;
+  title: string;
+  price: number;
+}
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products?limit=5")
-      .then((response) => setProducts(response.data));
+      .then((response) =>  setProducts(response))
   }, []);
 
   return (
     <div className="container mx-auto px-4">
       <Navbar />
-
-      <section className="py-12">
-        <div className="container mx-auto">
+      <section className="flex items-center py-20">
+        <div className="px-4 mx-auto max-w-7xl">
           <h2 className="text-3xl mb-8">All Products</h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products.map(product => (
-              <Link href={`/product/${product.id}`} key={product.id} passHref>
-                <div className="border border-gray-200 rounded overflow-hidden hover:shadow-lg cursor-pointer">
-                  <img className="w-full h-64 object-cover" src={product.image} alt={product.title} />
-                  <div className="p-4 h-24">
-                    <h3 className="font-semibold text-lg truncate">{product.title}</h3>
-                    <p className="mt-1 text-gray-500">${product.price}</p>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <ProductList products={products} />
         </div>
       </section>
-
       <Footer />
     </div>
-  )
+  );
 };
 
 export default Products;

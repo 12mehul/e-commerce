@@ -2,6 +2,14 @@
 import { useCart } from "../../contexts/CartContext";
 import { useState } from 'react';
 
+interface CartItem {
+    id: number;
+    image: string;
+    title: string;
+    price: number;
+    quantity: number;
+  }
+
 const Cart = () => {
   const {
     isCartOpen,

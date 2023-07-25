@@ -1,7 +1,6 @@
 'use client'
 import Link from 'next/link'
 import { BsCart4 } from "react-icons/bs";
-import { CgProfile } from "react-icons/cg";
 import { useCart } from '../../contexts/CartContext';
 const Navbar = () => {
   const { isCartOpen, closeCart, openCart } = useCart();
@@ -30,9 +29,6 @@ const Navbar = () => {
                     <button onClick={handleCartClick} className=" text-2xl">
                         <BsCart4 />
                     </button>
-                    <Link href="/" className="items-center hidden pl-6 text-2xl font-semibold lg:flex dark:text-gray-400">
-                        <CgProfile />
-                    </Link>
                 </div>
             </div>
         </nav>
