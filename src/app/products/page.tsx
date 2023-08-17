@@ -19,7 +19,7 @@ const Products = () => {
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products?limit=5")
-      .then((response) =>  setProducts(response))
+      .then((response: any) =>  setProducts(response.data))
   }, []);
 
   return (
