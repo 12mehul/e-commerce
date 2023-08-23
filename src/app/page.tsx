@@ -33,7 +33,7 @@ const Home = () => {
         <div className="container mx-auto">
           <h1 className="text-4xl mb-4">Welcome to Our Store</h1>
           <p className="text-xl">We offer the best products for you</p>
-          <img className="mt-8 w-full object-cover" src="/image.jpg" alt="Banner" />
+          <img className="mt-8 w-full object-cover" src="/online_banner.jpg" alt="Banner" />
         </div>
       </section>
 
