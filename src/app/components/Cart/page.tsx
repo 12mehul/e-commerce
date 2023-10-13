@@ -34,7 +34,7 @@ const Cart = () => {
   );
 
   return (
-    <div className="fixed right-0 top-0 w-80 h-full bg-white border-l p-6 overflow-auto">
+    <div className="fixed right-0 top-0 w-80 z-10 h-full bg-white border-l p-6 overflow-auto">
       <h2 className="text-2xl font-bold mb-4 text-black">Your Cart</h2>
 
       {cartItems.map((item) => (
